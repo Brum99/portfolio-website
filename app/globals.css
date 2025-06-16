@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------- BASE FONTS -------- */
+@layer base {
+  html {
+    font-family: var(--font-outfit), sans-serif;
+  }
+  
+  .font-outfit {
+    font-family: var(--font-outfit), sans-serif;
+  }
+  
+  .font-ovo {
+    font-family: var(--font-ovo), serif;
+  }
+}
+
+/* -------- TAILWIND UTILITIES -------- */
+@layer utilities {
+  .hover\:bg-lightHover:hover {
+    background-color: #fcf4ff;
+  }
+  
+  .grid-cols-auto {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@layer components {
+  .hover-shadow-black {
+    @apply hover:shadow-[4px_4px_0_#000];
+  }
+
+  .theme-dark .hover-shadow-black {
+    @apply hover:shadow-[4px_4px_0_#fff];
+  }
+}
+
+
+/* -------- THEME VARIABLES -------- */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --hover-color: #fcf4ff;
+  --nav-bg-color: rgba(255, 255, 255, 0.35);
+  --nav-blur-bg-color: rgba(255, 255, 255, 0.5);
+  --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  /* Transition timing - keep consistent across all elements */
+  --theme-transition-duration: 0.4s;
+  --theme-transition-timing: ease-in-out;
+}
+
+.theme-dark {
+  --bg-color: #11001F;
+  --text-color: #f1f1f1;
+  --hover-color: #2a004a;
+  --nav-bg-color: rgba(17, 0, 31, 0.6);
+  --nav-blur-bg-color: rgba(17, 0, 31, 0.8);
+  --nav-shadow: none;
+}
+
+/* -------- GLOBAL STYLES -------- */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* -------- NAVBAR SYNC STYLES -------- */
+/* Nav background styles - using CSS variables for instant sync */
+.nav-light-bg {
+  background-color: var(--nav-bg-color);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--nav-shadow);
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    backdrop-filter var(--theme-transition-duration) var(--theme-transition-timing),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+.nav-blur-bg {
+  background-color: var(--nav-blur-bg-color);
+  backdrop-filter: blur(16px);
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    backdrop-filter var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+.blur-bg {
+  background-color: var(--nav-blur-bg-color);
+  backdrop-filter: blur(16px);
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    backdrop-filter var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* Nav links - using CSS variables for instant sync */
+.main-nav a, 
+.main-nav li a,
+.main-nav button {
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* -------- SYNCHRONIZED THEME TRANSITIONS -------- */
+/* Apply consistent transitions when theme-transition class is active */
+.theme-transition * {
+  transition: 
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    color var(--theme-transition-duration) var(--theme-transition-timing),
+    border-color var(--theme-transition-duration) var(--theme-transition-timing),
+    backdrop-filter var(--theme-transition-duration) var(--theme-transition-timing),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* -------- HIDE IN DARK MODE -------- */
+.theme-dark .theme-dark-hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-dark-hide {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* -------- HOVER UTILITIES -------- */
+.hover\:bg-theme-hover:hover {
+  background-color: var(--hover-color);
+}
+
+/* Ensure nav elements respond to hover properly */
+.main-nav a:hover,
+.main-nav button:hover {
+  background-color: var(--hover-color);
+}
+
+/* -------- MOBILE MENU STYLES -------- */
+@media (max-width: 768px) {
+  .main-nav .mobile-menu {
+    background-color: var(--nav-blur-bg-color);
+    backdrop-filter: blur(16px);
+    transition: 
+      background-color var(--theme-transition-duration) var(--theme-transition-timing),
+      backdrop-filter var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+}
+
+@layer utilities {
+  .hover\:text-darkHover:hover {
+    color: #000000;
+  }
+
+  .theme-dark .hover\:text-darkHover:hover {
+    color: #000000;
+  }
+}
+.theme-dark .about-card:hover {
+  color: #000;
+}
+
+.grid-item {
+  transition: transform 0.5s, background-color 0.3s;
+}
+
+.grid-item:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-4px);
+}
+
+
+
+@layer components {
+  .project-box {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 
+      background-color var(--theme-transition-duration) var(--theme-transition-timing),
+      color var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+
+  .group:hover .project-box {
+    background-color: var(--hover-color);
+  }
+
+  .theme-dark .project-box {
+    color: white;
+  }
+
+    .show-more-btn {
+    color: var(--text-color);
+    border: 0.5px solid #4b5563; /* gray-700 default */
+    background-color: transparent;
+    transition: 
+      background-color var(--theme-transition-duration) var(--theme-transition-timing),
+      border-color var(--theme-transition-duration) var(--theme-transition-timing),
+      color var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+
+  .show-more-btn:hover {
+    background-color: var(--hover-color);
+  }
+
+  .theme-dark .show-more-btn {
+    border-color: #ffffff;
+  }
+}
+
+
+.theme-dark .force-dark-black {
+  --text-color: #000000 !important;
+  color: var(--text-color) !important;
+}
+
+
+.theme-dark .force-dark-heading-black {
+  color: #000000 !important;
+}
+
+
+.show-more-btn:hover {
+  background-color: var(--hover-color);
+}
+
+
+.contact-section {
+  background-image: url("/footer-bg-color.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% auto;
+}
+
+[data-theme="dark"] .contact-section {
+  background-image: none;
+}
+
