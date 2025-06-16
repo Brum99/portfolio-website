@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { assets, workData } from '../../assets/assets'
 import React from 'react'
 import DynamicArrow from './DynamicArrow';
@@ -16,42 +17,36 @@ const Work = (isDarkMode) => {
 
 
     <div className='grid grid-cols-auto my-10 gap-5'>
-        {workData.map((project, index)=>(
-            <div key={index} 
-            className='aspect-square bg-no-repeat bg-cover bg-center 
-            rounded-lg relative cursor-pointer group'
-            style={{backgroundImage: `url(${project.bgImage})`}}>
-                <div className='bg-white w-10/12 rounded-md 
-                absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 
-                flex items-center justify-between duration-500 group-hover:bottom-7 '>
+        {workData.map((project) => (
+            <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
+                style={{backgroundImage: `url(${project.bgImage})`}}
+            >
+                <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 '>
                     <div>
                         <h2 className='font-semibold force-dark-heading-black'>{project.title}</h2>
-
                         <p className='text-sm text-gray-700'>{project.description}</p>
                     </div>
-                    <div className='border rounded-full border-black w-9
-                    aspect-square flex items-center justify-center 
-                    shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition'>
-                        <Image src={assets.send_icon} alt= 'send icon' 
-                        className='w-5'/>
+                    <div className='border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition'>
+                        <Image src={assets.send_icon} alt='send icon' className='w-5'/>
                     </div>
                 </div>
-
-            </div>
+            </Link>
         ))}
         
-        <a
-            href=""
-            className="px-10 py-3 border rounded-full flex items-center gap-2 
-                        transition-colors duration-300 mx-auto my-20 w-max show-more-btn"
+        <Link
+            href="/projects"
+            className="px-10 py-3 border rounded-full flex items-center gap-2 transition-colors duration-300 mx-auto my-20 w-max show-more-btn"
             style={{
                 borderColor: 'var(--text-color)',
                 color: 'var(--text-color)'
             }}
-            >
+        >
             Show more
             <DynamicArrow className="w-4 h-4" />
-            </a>
+        </Link>
     </div>
     </div>
   )
