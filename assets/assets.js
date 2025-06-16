@@ -97,21 +97,25 @@ export const assets = {
 
 export const workData = [
     {
+        slug: 'frontend-project',
         title: 'Frontend project',
         description: 'Web Design',
         bgImage: '/work-1.png',
     },
     {
+        slug: 'geo-based-app',
         title: 'Geo based app',
         description: 'Mobile App',
         bgImage: '/work-2.png',
     },
     {
+        slug: 'photography-site',
         title: 'Photography site',
         description: 'Web Design',
         bgImage: '/work-3.png',
     },
     {
+        slug: 'ui-ux-designing',
         title: 'UI/UX designing',
         description: 'UI/UX Design',
         bgImage: '/work-4.png',

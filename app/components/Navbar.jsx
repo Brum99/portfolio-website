@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 
 
 
@@ -100,8 +101,15 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                   {item.name}
                 </a>
               ))}
+              <Link
+                href="/projects"
+                className="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-theme-hover"
+                style={{ color: 'var(--text-color)' }}
+              >
+                Projects
+              </Link>
+              </div>
             </div>
-          </div>
 
           {/* Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
@@ -163,6 +171,14 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                   {item.name}
                 </a>
               ))}
+              <Link
+                href="/projects"
+                className="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 hover:bg-theme-hover"
+                style={{ color: 'var(--text-color)' }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Projects
+              </Link>
             </div>
           </div>
         )}
