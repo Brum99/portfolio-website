@@ -1,10 +1,35 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { workData } from '../../assets/assets';
+import Navbar from '../components/Navbar';
 
 export default function ProjectsPage() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.add('theme-transition');
+    if (isDarkMode) {
+      root.classList.add('theme-dark');
+      localStorage.theme = 'dark';
+    } else {
+      root.classList.remove('theme-dark');
+      localStorage.theme = '';
+    }
+
+    const timeout = setTimeout(() => {
+      root.classList.remove('theme-transition');
+    }, 400);
+
+    return () => clearTimeout(timeout);
+  }, [isDarkMode]);
+
   return (
-    <div className="w-full px-[12%] py-10 flex flex-col gap-8">
+    <>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <div className="w-full px-[12%] py-10 flex flex-col gap-8">
       {workData.map((project) => (
         <Link
           key={project.slug}
@@ -20,6 +45,7 @@ export default function ProjectsPage() {
           </div>
         </Link>
       ))}
-    </div>
+      </div>
+    </>
   );
 }
