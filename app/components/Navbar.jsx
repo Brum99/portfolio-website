@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 
 
@@ -9,6 +10,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +46,16 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     setIsMobileMenuOpen(false);
   };
 
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    if (pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
     <nav 
       ref={navRef}
@@ -64,18 +77,14 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Fixed to left */}
           <div className="flex-shrink-0">
-            <a 
-              href="#header" 
+            <Link
+              href={pathname === '/' ? '#header' : '/#header'}
               className="text-xl font-bold"
               style={{ color: 'var(--text-color)' }}
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={(e) => handleNavClick(e, 'header')}
             >
               Samuel.
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -88,18 +97,15 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 { name: 'Work', id: 'work' },
                 { name: 'Contact', id: 'contact' }
               ].map((item) => (
-                <a
+                <Link
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={pathname === '/' ? `#${item.id}` : `/#${item.id}`}
                   className="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:bg-theme-hover"
                   style={{ color: 'var(--text-color)' }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }}
+                  onClick={(e) => handleNavClick(e, item.id)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <Link
                 href="/projects"
@@ -158,18 +164,15 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 { name: 'Work', id: 'work' },
                 { name: 'Contact', id: 'contact' }
               ].map((item) => (
-                <a
+                <Link
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={pathname === '/' ? `#${item.id}` : `/#${item.id}`}
                   className="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 hover:bg-theme-hover"
                   style={{ color: 'var(--text-color)' }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }}
+                  onClick={(e) => handleNavClick(e, item.id)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <Link
                 href="/projects"
