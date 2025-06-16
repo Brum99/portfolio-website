@@ -34,7 +34,7 @@ export default function ProjectDetails({ params }) {
   return (
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <div className="w-full px-[12%] pt-24 pb-10 flex flex-col items-start gap-6">
+
         <div className="w-full aspect-video relative">
           <Image src={project.bgImage} alt={project.title} fill className="object-cover" />
         </div>
