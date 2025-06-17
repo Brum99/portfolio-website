@@ -240,3 +240,8 @@ body {
   background-image: none;
 }
 
+/* Utility class to invert icons when dark mode is active */
+.theme-dark .invert-on-dark {
+  filter: brightness(0) invert(1);
+}
+
