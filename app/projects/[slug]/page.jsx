@@ -1,12 +1,13 @@
 'use client';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { workData } from '../../../assets/assets';
 import Navbar from '../../components/Navbar';
 
 export default function ProjectDetails({ params }) {
+  const { slug } = React.use(params);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const project = workData.find((p) => p.slug === params.slug);
+  const project = workData.find((p) => p.slug === slug);
 
   useEffect(() => {
     const root = document.documentElement;
