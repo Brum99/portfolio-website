@@ -97,9 +97,9 @@ export const assets = {
 
 export const workData = [
     {
-        slug: 'frontend-project',
-        title: 'Frontend project',
-        description: 'Web Design',
+        slug: 'MRI-brain-tumor-clasification',
+        title: 'MRI Brain Tumor Clasification',
+        description: 'Machine Learning',
         bgImage: '/work-1.png',
     },
     {
