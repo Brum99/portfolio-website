@@ -100,7 +100,7 @@ export const workData = [
         slug: 'MRI-brain-tumor-clasification',
         title: 'MRI Brain Tumor Clasification',
         description: 'Machine Learning',
-        bgImage: '/work-1.png',
+        bgImage: '/work-1-MRI.png',
     },
     {
         slug: 'geo-based-app',
