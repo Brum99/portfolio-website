@@ -1,47 +1,32 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { workData } from '../../../assets/assets';
 import Navbar from '../../components/Navbar';
+import { loadProjectMdx } from '../../../lib/mdx-loader';
 
-export default function ProjectDetails({ params }) {
-  const { slug } = React.use(params);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+export default async function ProjectDetails({ params }) {
+  const { slug } = params;
   const project = workData.find((p) => p.slug === slug);
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.add('theme-transition');
-
-    if (isDarkMode) {
-      root.classList.add('theme-dark');
-      localStorage.theme = 'dark';
-    } else {
-      root.classList.remove('theme-dark');
-      localStorage.theme = '';
-    }
-
-    const timeout = setTimeout(() => {
-      root.classList.remove('theme-transition');
-    }, 400);
-
-    return () => clearTimeout(timeout);
-  }, [isDarkMode]);
-
   if (!project) {
-    return <div className="p-10">Project not found.</div>;
+    return <div className="p-10 text-red-600">🚫 Project not found.</div>;
   }
+
+  const mdxContent = await loadProjectMdx(project.contentPath);
 
   return (
     <>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Navbar />
 
       <div className="w-full px-[12%] pt-24 pb-10 flex flex-col items-start gap-6">
         <div className="w-full aspect-video relative">
-          <Image src={project.bgImage} alt={project.title} fill className="object-cover" />
+          <img src={project.bgImage} alt={project.title} className="object-cover w-full h-auto rounded-lg" />
         </div>
-        <h1 className="text-4xl font-semibold" style={{color: 'var(--text-color)'}}>{project.title}</h1>
-        <p style={{color: 'var(--text-color)'}}>{project.description}</p>
+        <h1 className="text-4xl font-semibold" style={{ color: 'var(--text-color)' }}>
+          {project.title}
+        </h1>
+        <p style={{ color: 'var(--text-color)' }}>{project.description}</p>
+
+        {/* 🧠 This is where the MDX content renders */}
+        <div className="mt-8 w-full">{mdxContent}</div>
       </div>
     </>
   );

@@ -97,29 +97,31 @@ export const assets = {
 
 export const workData = [
     {
-        slug: 'MRI-brain-tumor-clasification',
-        title: 'MRI Brain Tumor Clasification',
-        description: 'Machine Learning',
-        bgImage: '/work-1-MRI.png',
+        slug: 'mri-classification',
+        title: 'Brain MRI Classification Using CNNs',
+        description: 'A CNN-based deep learning model for classifying MRI brain scans.',
+        bgImage: '/projectImages/mri-CNN/work-1-MRI.png',
+        contentPath: 'mri-classification.mdx', // just the filename
+        tags: ['TensorFlow', 'Medical Imaging', 'Python'],
     },
-    {
-        slug: 'geo-based-app',
-        title: 'Geo based app',
-        description: 'Mobile App',
-        bgImage: '/work-2.png',
-    },
-    {
-        slug: 'photography-site',
-        title: 'Photography site',
-        description: 'Web Design',
-        bgImage: '/work-3.png',
-    },
-    {
-        slug: 'ui-ux-designing',
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: '/work-4.png',
-    },
+    // {
+    //     slug: 'geo-based-app',
+    //     title: 'Geo based app',
+    //     description: 'Mobile App',
+    //     bgImage: '/work-2.png',
+    // },
+    // {
+    //     slug: 'photography-site',
+    //     title: 'Photography site',
+    //     description: 'Web Design',
+    //     bgImage: '/work-3.png',
+    // },
+    // {
+    //     slug: 'ui-ux-designing',
+    //     title: 'UI/UX designing',
+    //     description: 'UI/UX Design',
+    //     bgImage: '/work-4.png',
+    // },
 ]
 
 export const serviceData = [
