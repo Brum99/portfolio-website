@@ -14,18 +14,21 @@ export default async function ProjectDetails({ params }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar /> {/* Navbar handles its own dark mode logic now */}
 
       <div className="w-full px-[12%] pt-24 pb-10 flex flex-col items-start gap-6">
         <div className="w-full aspect-video relative">
-          <img src={project.bgImage} alt={project.title} className="object-cover w-full h-auto rounded-lg" />
+          <img
+            src={project.bgImage}
+            alt={project.title}
+            className="object-cover w-full h-auto rounded-lg"
+          />
         </div>
         <h1 className="text-4xl font-semibold" style={{ color: 'var(--text-color)' }}>
           {project.title}
         </h1>
         <p style={{ color: 'var(--text-color)' }}>{project.description}</p>
 
-        {/* 🧠 This is where the MDX content renders */}
         <div className="mt-8 w-full">{mdxContent}</div>
       </div>
     </>
