@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio Website
 
-## Getting Started
+This repository contains the source code for my personal data science and machine learning portfolio website, hosted at [www.sam-portfolio.tech](https://www.sam-portfolio.tech). The site showcases selected projects, work experience, technical skills, and provides links to contact information and relevant profiles.
 
-First, run the development server:
+---
 
-```bash
+## Purpose
+
+The aim of this portfolio is to present my data science background and demonstrate my experience in applied machine learning, research, and large language model evaluation. It serves as a central hub for sharing projects, writing articles, and providing access to my resume and GitHub repositories.
+
+---
+
+## Features
+
+- Fully responsive design
+- Landing page with project highlights
+- Dedicated sections for:
+  - Machine Learning and Data Science projects
+  - Work and research experience
+  - Technical skillset
+  - Contact form and social links
+- Clean, minimal layout designed for readability and clarity
+
+---
+
+## Technologies Used
+
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
+- **Version Control**: Git and GitHub
+- **Hosting**: [www.sam-portfolio.tech](https://www.sam-portfolio.tech)
+
+---
+
+## Folder Structure
+
+portfolio-website/
+│
+├── app/                 → Next.js app directory (pages, routing, layout)
+├── assets/              → Static assets such as logos or project images
+├── public/              → Public-facing files (e.g. favicons, robots.txt)
+├── sections/            → Page sections for reusable layout blocks (e.g. Hero, Projects)
+│
+├── .eslintrc.json       → ESLint configuration
+├── .gitignore           → Git exclusions
+├── README.md            → Project documentation
+├── eslint.config.mjs    → ESLint configuration for MJS
+├── jsconfig.json        → JavaScript path alias configuration
+├── next.config.mjs      → Next.js settings
+├── package.json         → Project dependencies and scripts
+├── package-lock.json    → Dependency tree lockfile
+├── postcss.config.mjs   → PostCSS configuration
+└── tailwind.config.mjs  → Tailwind CSS customisations
+
+
+## Folder Structure
+
+portfolio-website/
+│
+├── public/             → Static assets (images, favicon, etc.)
+├── components/         → Reusable UI components
+├── pages/              → Main website pages (e.g. index.tsx, about.tsx)
+├── styles/             → Global and module-based styles
+├── data/               → JSON or config files for dynamic content
+├── .gitignore          → Files to exclude from Git tracking
+├── tailwind.config.js  → Tailwind CSS configuration
+├── next.config.js      → Next.js configuration
+└── README.md           → Project overview and instructions
+
+---
+
+## Installation and Local Development
+
+If you'd like to run the website locally:
+
+1. Clone the repository  
+
+git clone https://github.com/Brum99/portfolio-website.git
+
+cd portfolio-website
+
+Getting Started
+To install and run the project locally:
+
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Once running, open your browser and navigate to:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+http://localhost:3000
 
-## Learn More
+Planned Improvements
+Add a blog section featuring technical articles and project breakdowns
 
-To learn more about Next.js, take a look at the following resources:
+Integrate automated GitHub project imports for real-time updates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add SEO metadata and lightweight analytics for page insights
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Author
+Samuel Peterson
+Master of Data Science, RMIT University
+Portfolio: www.sam-portfolio.tech
+LinkedIn: linkedin.com/in/sam-peterson-179b73217
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
