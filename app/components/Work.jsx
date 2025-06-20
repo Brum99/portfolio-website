@@ -18,12 +18,19 @@ const Work = (isDarkMode) => {
 
     <div className='grid grid-cols-auto my-10 gap-5'>
         {workData.map((project) => (
-            <Link
+                <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
-                style={{backgroundImage: `url(${project.bgImage})`}}
-            >
+                className="relative group rounded-lg overflow-hidden"
+                >
+                <div className="aspect-video w-full relative">
+                    <Image
+                    src={project.bgImage}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    />
+                </div>
                 <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 '>
                     <div>
                         <h2 className='font-semibold force-dark-heading-black'>{project.title}</h2>
