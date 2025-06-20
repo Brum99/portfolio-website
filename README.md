@@ -107,7 +107,10 @@ Add SEO metadata and lightweight analytics for page insights
 
 Author
 Samuel Peterson
+
 Master of Data Science, RMIT University
+
 Portfolio: www.sam-portfolio.tech
+
 LinkedIn: linkedin.com/in/sam-peterson-179b73217
 
