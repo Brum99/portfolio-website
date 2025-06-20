@@ -11,7 +11,7 @@ const Services = () => {
             My Services</h2>
                  
         <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo' style={{ color: 'var(--text-color)' }}
-        >I'm a data scientist and AI systems expert from Melbourne, Australia with experience in surgical robotics research, large language model evaluation, and building intelligent applications across web and machine learning domains.</p>
+        >I spend most of my time working across these areas.</p>
              
         <div className='grid grid-cols-auto gap-6 my-10'>
                  
