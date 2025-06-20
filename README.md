@@ -35,38 +35,37 @@ The aim of this portfolio is to present my data science background and demonstra
 
 ## Folder Structure
 
-portfolio-website/
-│
-├── app/                 → Next.js app directory (pages, routing, layout)
-├── assets/              → Static assets such as logos or project images
-├── public/              → Public-facing files (e.g. favicons, robots.txt)
-├── sections/            → Page sections for reusable layout blocks (e.g. Hero, Projects)
-│
-├── .eslintrc.json       → ESLint configuration
-├── .gitignore           → Git exclusions
-├── README.md            → Project documentation
-├── eslint.config.mjs    → ESLint configuration for MJS
-├── jsconfig.json        → JavaScript path alias configuration
-├── next.config.mjs      → Next.js settings
-├── package.json         → Project dependencies and scripts
-├── package-lock.json    → Dependency tree lockfile
-├── postcss.config.mjs   → PostCSS configuration
-└── tailwind.config.mjs  → Tailwind CSS customisations
+app/ – Next.js app directory (routing, pages, layout)
+
+assets/ – Static assets such as logos and project images
+
+public/ – Public-facing files like favicons and site metadata
+
+sections/ – Modular sections of pages (e.g. Hero, About, Projects)
+
+Files in the root directory:
+
+.eslintrc.json – ESLint configuration
+
+.gitignore – Git exclusions
+
+README.md – Project documentation
+
+eslint.config.mjs – ESLint config for ESM support
+
+jsconfig.json – Path alias configuration for JS/TS
+
+next.config.mjs – Next.js configuration settings
+
+package.json – Dependencies and build scripts
+
+package-lock.json – Exact version lockfile for reproducible builds
+
+postcss.config.mjs – PostCSS configuration
+
+tailwind.config.mjs – Tailwind CSS custom theme and plugin config
 
 
-## Folder Structure
-
-portfolio-website/
-│
-├── public/             → Static assets (images, favicon, etc.)
-├── components/         → Reusable UI components
-├── pages/              → Main website pages (e.g. index.tsx, about.tsx)
-├── styles/             → Global and module-based styles
-├── data/               → JSON or config files for dynamic content
-├── .gitignore          → Files to exclude from Git tracking
-├── tailwind.config.js  → Tailwind CSS configuration
-├── next.config.js      → Next.js configuration
-└── README.md           → Project overview and instructions
 
 ---
 
