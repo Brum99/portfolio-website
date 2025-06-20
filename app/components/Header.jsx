@@ -62,7 +62,7 @@ const Header = ({ isDarkMode }) => {
           </a>
                         
         <a
-          href="/Resume_Sam_Peterson.pdf"
+          href="/Samuel David Peterson - Resume.pdf"
             download
             className="px-10 py-3 border rounded-full flex items-center gap-2 
                       transition-all duration-300"
