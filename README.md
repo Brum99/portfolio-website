@@ -80,21 +80,25 @@ git clone https://github.com/Brum99/portfolio-website.git
 cd portfolio-website
 
 Getting Started
+
 To install and run the project locally:
 
 
-# Install dependencies
+## Install dependencies
 npm install
 
-# Start the development server
+## Start the development server
+
 npm run dev
-Once running, open your browser and navigate to:
 
-
+## Once running, open your browser and navigate to:
 
 http://localhost:3000
 
-Planned Improvements
+
+
+## Planned Improvements
+
 Add a blog section featuring technical articles and project breakdowns
 
 Integrate automated GitHub project imports for real-time updates
