@@ -1,29 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 import Navbar from '../../components/Navbar';
 import Image from 'next/image';
 
 export default function ProjectDetailsClient({ project, mdxContent }) {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.add('theme-transition');
-    if (isDarkMode) {
-      root.classList.add('theme-dark');
-      localStorage.theme = 'dark';
-    } else {
-      root.classList.remove('theme-dark');
-      localStorage.theme = '';
-    }
-
-    const timeout = setTimeout(() => {
-      root.classList.remove('theme-transition');
-    }, 400);
-
-    return () => clearTimeout(timeout);
-  }, [isDarkMode]);
+  const { isDarkMode, setIsDarkMode } = useTheme();
 
   return (
     <>
