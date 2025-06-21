@@ -102,7 +102,8 @@ export const workData = [
         title: 'MRI Classification Using CNNs',
         description: 'Machine Learning',
         bgImage: '/projectImages/mri-CNN/work-1-MRI.png',
-        contentPath: 'mri-classification.mdx', // just the filename
+        headerImage: '/projectImages/mri-CNN/header_mri_banner.png',
+        contentPath: 'mri-classification.mdx', 
         tags: ['TensorFlow', 'Medical Imaging', 'Python'],
     },
     {
