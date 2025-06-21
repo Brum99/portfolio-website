@@ -23,8 +23,8 @@ const Header = ({ isDarkMode }) => {
       </h1>
       
       <p className="max-w-2xl mx-auto font-ovo">
-        I am a Data Scientist from Melbourne Australia, with experience in machine learning, AI integration, and full-stack development.
-      </p>
+         I specialise in AI systems and machine learning, from surgical robotics research to large language model evaluation. Currently building intelligent solutions that bridge academic research and real-world applications.
+ </p>
       
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
         <a

@@ -40,12 +40,9 @@ const About = () => {
         {/* Text + Grid */}
         <div className='flex-1'>
           <p className='mb-10 max-w-2xl font-ovo' style={{ color: 'var(--text-color)' }}>
-            I am an experienced Data Scientist and Web App Developer with a strong foundation in AI and machine
-            learning. Throughout my journey, I have had the privilege of contributing to cutting-edge research
-            in surgical robotics, where I helped develop a 3D convolutional neural network to assess surgeon skill
-            levels using video data from robotic surgical systems. My experience spans both academic research and
-            industry, allowing me to craft elegant, responsive interfaces while also understanding the power of
-            data-driven systems through advanced AI model training for large language models.
+           I am an experienced Data Scientist and Machine Learning Engineer with a strong foundation in AI. Throughout my journey, I have had the privilege of contributing to cutting-edge research in surgical robotics, where I helped develop a 3D convolutional neural network to assess surgeon skill levels using video data from robotic surgical systems.
+
+My experience spans both academic research and industry applications. Currently, I work on evaluating and improving large language model performance, applying rigorous statistical analysis to identify patterns in AI system behavior. This combination of research depth and practical implementation allows me to tackle complex problems from multiple angles.
           </p>
 
           <ul className='grid grid-col-1 sm:grid-cols-3 gap-6 max-w-2xl'>
