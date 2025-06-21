@@ -3,10 +3,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
+import { useTheme } from '../context/ThemeContext';
 
 
-
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+const Navbar = () => {
+  const { isDarkMode, setIsDarkMode } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
