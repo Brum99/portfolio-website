@@ -17,10 +17,13 @@ export default function ProjectsPage() {
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className="border rounded-lg overflow-hidden group"
+            className="border rounded-lg overflow-hidden group transition-transform duration-500 transform hover:scale-[1.03] hover:shadow-lg"
           >
             <div className="w-full aspect-video relative">
-              <Image src={project.bgImage} alt={project.title} fill className="object-cover" />
+              <Image src={project.bgImage} 
+              alt={project.title} 
+              fill 
+              className="object-cover" />
             </div>
             <div className="p-4">
               <h2 className="text-2xl font-semibold mb-1" style={{ color: 'var(--text-color)' }}>

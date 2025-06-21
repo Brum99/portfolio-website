@@ -7,7 +7,7 @@ import { motion } from "motion/react"
 // Add { isDarkMode } as a parameter to receive the prop
 const Header = ({ isDarkMode }) => {
   return (
-    <div id='header' className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
+    <div id='header' className="w-11/12 max-w-3xl text-center mx-auto h-screen pt-24 flex flex-col items-center justify-center gap-4">
       
       <div>
         <Image src={assets.profile_img} alt='' className="rounded-full w-32" />
