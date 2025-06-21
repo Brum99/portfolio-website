@@ -94,8 +94,8 @@ const Navbar = () => {
               {[
                 { name: 'Home', id: 'header' },
                 { name: 'About', id: 'about' },
-                { name: 'Services', id: 'services' },
                 { name: 'Work', id: 'work' },
+                { name: 'Services', id: 'services' },
                 { name: 'Contact', id: 'contact' }
               ].map((item) => (
                 <Link

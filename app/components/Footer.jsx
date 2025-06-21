@@ -2,7 +2,6 @@ import { assets } from '../../assets/assets'
 import Image from 'next/image'
 import React from 'react'
 
-
 const Footer = () => {
   return (
     <div className='mt-20'>
@@ -27,22 +26,29 @@ const Footer = () => {
         </div>
       </div>
 
-
-      <div className='text-center sm:flex items-center justify-between border-t
-      border-gray-400 mx-[10%] mt-12 py-6'>
+      <div className='text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6'>
         <p>@ 2025 Samuel Peterson. All rights reserved.</p>
         <ul className='flex items-center gap-10 justify-center mt-4 sm:mt-0'>
-            <li>
+          <li>
             <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.linkedin.com/in/sam-peterson-179b73217"
-                className="text-blue-500 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/sam-peterson-179b73217"
+              className="text-blue-500 hover:underline"
             >
-                LinkedIn
+              LinkedIn
             </a>
-            </li>
-
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/Brum99"
+              className="text-blue-500 hover:underline"
+            >
+              GitHub
+            </a>
+          </li>
         </ul>
       </div>
     </div>
