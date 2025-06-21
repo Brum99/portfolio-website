@@ -1,6 +1,6 @@
 import { workData } from '../../../assets/assets';
-import Navbar from '../../components/Navbar';
 import { loadProjectMdx } from '../../../lib/mdx-loader';
+import ProjectDetailsClient from './ProjectDetailsClient';
 
 export default async function ProjectDetails({ params }) {
   const { slug } = params;
@@ -12,25 +12,5 @@ export default async function ProjectDetails({ params }) {
 
   const mdxContent = await loadProjectMdx(project.contentPath);
 
-  return (
-    <>
-      <Navbar /> {/* Navbar handles its own dark mode logic now */}
-
-      <div className="w-full px-[12%] pt-24 pb-10 flex flex-col items-start gap-6">
-        <div className="w-full aspect-video relative">
-          <img
-            src={project.bgImage}
-            alt={project.title}
-            className="object-cover w-full h-auto rounded-lg"
-          />
-        </div>
-        <h1 className="text-4xl font-semibold" style={{ color: 'var(--text-color)' }}>
-          {project.title}
-        </h1>
-        <p style={{ color: 'var(--text-color)' }}>{project.description}</p>
-
-        <div className="mt-8 w-full">{mdxContent}</div>
-      </div>
-    </>
-  );
+  return <ProjectDetailsClient project={project} mdxContent={mdxContent} />;
 }
