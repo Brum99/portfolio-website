@@ -1,5 +1,5 @@
 import { Outfit, Ovo } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import { ThemeProvider } from "./context/ThemeContext"; 
 
 const outfit = Outfit({
