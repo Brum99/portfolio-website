@@ -1,112 +1,155 @@
 import CustomImage from '@/components/CustomImage'
 import ModelButton from '@/components/ModelButton'
 
+
+
+
+<div className = "w-1/2 mx-auto text-center mb-5">
 # Brain MRI Tumor Classification Using Deep Learning
 
 > 🚧 **This project is currently in development.**  
 > Explore the complete implementation: [GitHub Repository](https://github.com/Brum99/MRI_brain_tumor_prediction)
-
+</div>
 ---
 
 
 <div className="mt-10 mb-10">
-    ##🧭 Why This Matters
+    <div className="mb-5">
+    Why This Matters
+    </div>
 
-Before diving into the technical implementation of this project, it's essential
- to understand **why this work matters**. Brain tumor detection is not just a 
- computational challenge — it’s a life-critical task with real-world 
- implications. The types of tumors discussed here differ dramatically in 
- prognosis, treatment approach, and urgency. By establishing a clear clinical 
- picture of these conditions, we can better appreciate the role that machine 
- learning can play in **supporting early, accurate, and scalable diagnosis**.
+    Before diving into the technical implementation of this project, it's essential
+    to understand **why this work matters**. Brain tumor detection is not just a 
+    computational challenge — it’s a life-critical task with real-world 
+    implications. The types of tumors discussed here differ dramatically in 
+    prognosis, treatment approach, and urgency. By establishing a clear clinical 
+    picture of these conditions, we can better appreciate the role that machine 
+    learning can play in **supporting early, accurate, and scalable diagnosis**.
 </div>
 
 ---
 
 <div className="mt-10 mb-10">
-## 🩺 Clinical Challenge: The Need for Automated Diagnostics
 
-Brain tumors represent one of the most critical diagnostic challenges in modern medicine. These abnormal cell proliferations can be benign (non-cancerous) or malignant (cancerous), with early detection being paramount for successful treatment outcomes and patient survival rates.
+    <div className="mb-5">
+    Clinical Challenge: The Need for Automated Diagnostics
+    </div>
 
-While Magnetic Resonance Imaging (MRI) provides exceptional soft tissue contrast for tumor visualization, **the manual interpretation process faces significant bottlenecks**:
+    Brain tumors represent one of the most critical diagnostic challenges in modern medicine. These abnormal cell proliferations can be benign or malignant, with early detection being paramount for successful treatment outcomes and patient survival rates.
 
-- **Time Constraints**: Radiologists may review 100+ scans daily, leading to fatigue-induced oversights
-- **Diagnostic Variability**: Inter-observer agreement rates can vary significantly between practitioners  
-- **Resource Limitations**: Many healthcare systems face critical shortages of specialized radiologists
-- **Urgent Triage Needs**: Emergency cases require rapid preliminary assessments
+    <div className="mt-5 mb-5">
+    While Magnetic Resonance Imaging (MRI) provides exceptional soft tissue contrast for tumor visualisation, **the manual interpretation process faces significant bottlenecks**:
+    </div>
 
-This project investigates how **Convolutional Neural Networks (CNNs)** can serve as intelligent diagnostic support tools, providing rapid preliminary assessments while maintaining the essential human expertise in final diagnosis.
+    <div className="mt-5 mb-5">
+    - **Time Constraints**: Radiologists may review 100+ scans daily, leading to fatigue-induced oversights
+    - **Diagnostic Variability**: Inter-observer agreement rates can vary significantly between practitioners  
+    - **Resource Limitations**: Many healthcare systems face critical shortages of specialised radiologists
+    - **Urgent Triage Needs**: Emergency cases require rapid preliminary assessments
+    </div>
+
+
+    This project investigates how **Convolutional Neural Networks (CNNs)** can serve as intelligent diagnostic support tools, providing rapid preliminary assessments while maintaining the essential human expertise in final diagnosis.
+
 </div>
 
 ---
 
 <div className="mt-10 mb-10">
-## 🧠 Tumor Types in This Study
+## Tumor Types in This Study
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6">
+<div className="flex flex-col md:flex-row gap-10 mt-6 items-start">
 
+  {/* LEFT: Tumor Descriptions */}
+  <div className="flex flex-col space-y-10 md:w-1/2">
     <div className="space-y-2">
-        <h3 className="text-2xl font-semibold">
+      <h3 className="text-2xl font-semibold">
         1. Pituitary Adenomas <span className="text-green-600 text-lg">(Often benign & highly treatable)</span>
-        </h3>
-        <p><strong>📍 Location:</strong> Sellar and suprasellar regions — the “master gland” area behind the eyes.</p>
-        <p><strong>🔬 Characteristics:</strong> Benign tumors from the pituitary gland, often hormonally active.</p>
-        <p><strong>🧠 Clinical Impact:</strong> Can lead to <em>Cushing’s disease</em>, vision loss, mood swings, and fertility problems due to hormonal disruption and optic chiasm compression.</p>
-        <p><strong>🖼️ MRI Features:</strong> Well-defined masses with strong post-contrast enhancement.</p>
+      </h3>
+      <p><strong>Location:</strong> Sellar and suprasellar regions — the “master gland” area behind the eyes.</p>
+      <p><strong>Characteristics:</strong> Benign tumors from the pituitary gland, often hormonally active.</p>
+      <p><strong>Clinical Impact:</strong> Can lead to <em>Cushing’s disease</em>, vision loss, mood swings, and fertility problems due to hormonal disruption and optic chiasm compression.</p>
+      <p><strong>MRI Features:</strong> Well-defined masses with strong post-contrast enhancement.</p>
     </div>
 
     <div className="space-y-2">
-        <h3 className="text-2xl font-semibold">
+      <h3 className="text-2xl font-semibold">
         2. Gliomas <span className="text-red-600 text-lg">(Median survival &lt; 15 months)</span>
-        </h3>
-        <p><strong>📍 Location:</strong> Can appear in cerebral hemispheres, brainstem, or cerebellum.</p>
-        <p><strong>🔬 Characteristics:</strong> Range from low-grade to aggressive glioblastomas (Grade IV).</p>
-        <p><strong>🧠 Clinical Impact:</strong> Symptoms depend on location — seizures, personality change, speech difficulties, or weakness. Glioblastomas have a median survival under 15 months.</p>
-        <p><strong>🖼️ MRI Features:</strong> Irregular infiltrative growth with peritumoral edema and mass effect.</p>
+      </h3>
+      <p><strong>Location:</strong> Can appear in cerebral hemispheres, brainstem, or cerebellum.</p>
+      <p><strong>Characteristics:</strong> Range from low-grade to aggressive glioblastomas (Grade IV).</p>
+      <p><strong>Clinical Impact:</strong> Symptoms depend on location — seizures, personality change, speech difficulties, or weakness. Glioblastomas have a median survival under 15 months.</p>
+      <p><strong>MRI Features:</strong> Irregular infiltrative growth with peritumoral edema and mass effect.</p>
     </div>
 
-    <div className="space-y-2 md:col-span-2">
-        <h3 className="text-2xl font-semibold">
+    <div className="space-y-2">
+      <h3 className="text-2xl font-semibold">
         3. Meningiomas <span className="text-yellow-600 text-lg">(Slow-growing, usually noncancerous)</span>
-        </h3>
-        <p><strong>📍 Location:</strong> Along dural surfaces from arachnoid cap cells (outer brain lining).</p>
-        <p><strong>🔬 Characteristics:</strong> Most common adult brain tumor, usually benign and slow-growing.</p>
-        <p><strong>🧠 Clinical Impact:</strong> Symptoms arise from compression — headaches, cognitive changes, seizures depending on tumor position.</p>
-        <p><strong>🖼️ MRI Features:</strong> Homogeneous enhancement with the classic “dural tail” sign.</p>
+      </h3>
+      <p><strong>Location:</strong> Along dural surfaces from arachnoid cap cells (outer brain lining).</p>
+      <p><strong>Characteristics:</strong> Most common adult brain tumor, usually benign and slow-growing.</p>
+      <p><strong>Clinical Impact:</strong> Symptoms arise from compression — headaches, cognitive changes, seizures depending on tumor position.</p>
+      <p><strong>MRI Features:</strong> Homogeneous enhancement with the classic “dural tail” sign.</p>
     </div>
+  </div>
 
-    </div>
+  {/* RIGHT: Enlarged Image */}
+  <div className="self-center md:w-1/2">
+    <CustomImage
+      src="/projectImages/mri-CNN/work-1-MRI.png"
+      alt="Classified MRI Example"
+      className="rounded-lg w-full"
+    />
+  </div>
 </div>
 
-<CustomImage
-  src="/projectImages/mri-CNN/work-1-MRI.png"
-  alt="Classified MRI Example"
-  width={800}
-  height={500}
-  className="mt-8 rounded-lg mx-auto"
-/>
+</div>
+
+
 
 ---
 
-## 💡 Technical Implementation Overview
+<div className="mt-10 mb-10">
 
-**Architecture**: Custom CNN with transfer learning from pre-trained ImageNet weights  
-**Dataset**: 3,264 T1-weighted contrast-enhanced MRI slices  
-**Performance**: 92.3% validation accuracy with balanced precision across tumor types  
-**Interpretability**: Integrated Grad-CAM++ for explainable AI visualization  
-**Framework**: TensorFlow 2.x with Keras high-level API
+##  Why Use CNNs?
 
-### Model Architecture Highlights
-- **Input Pipeline**: Automated DICOM processing with intensity normalization
-- **Data Augmentation**: Rotation, translation, and contrast adjustments to improve generalization  
-- **Architecture**: Modified ResNet-50 backbone with custom classification head
-- **Optimization**: Adam optimizer with learning rate scheduling and early stopping
+<div className="mt-5 mb-10">
+Convolutional Neural Networks (CNNs) are designed to analyze visual data. They work by applying filters that detect patterns in an image — starting from **simple edges and shapes**, then building toward **complex features** like tumor textures and outlines.  
+This layered pattern recognition makes CNNs particularly effective for **medical image classification**, such as identifying brain tumors from MRI scans.
+</div>
+
+##  Development Environment & Model Approach
+
+<div className="mt-5 mb-5">
+**Compute Environment**: Trained in Google Colab with **Tesla T4 GPU acceleration**  
+**Model Type**: Deep learning classifier using **Convolutional Neural Networks (CNNs)**  
+**Pretrained Backbone**: Xception architecture initialized with **ImageNet weights**  
+**Input Dimensions**: All MRI slices resized to **299×299 pixels**  
+**Frameworks Used**: TensorFlow 2.x with the Keras high-level API  
+</div>
+
+##  Dataset & Scope of Classification
+
+<div className="mt-5 mb-5">
+This project uses a **publicly available brain MRI dataset** that consolidates images from three sources: **Figshare**, **SARTAJ**, and **Br35H**. It contains **7,023 brain MRI images** across four categories: **glioma**, **meningioma**, **pituitary**, and **no tumor**.
+
+>  Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare for data integrity.
+
+According to the **World Health Organization (WHO)**, a full clinical diagnosis of brain tumors includes identifying not only the tumor’s type but also its **grade** and **malignancy** level.  
+In this project, we focus **only on classifying the type of tumor** based on MRI features — not on grading or malignancy.
+
+This is a crucial step in building automated systems that could eventually aid in faster and more scalable triage, particularly in **resource-limited settings**.
+</div>
+
+</div>
+
+---
 
 <ModelButton endpoint="/api/predict" />
 
 ---
 
-## 📊 Performance Analysis & Model Interpretability
+##  Performance Analysis & Model Interpretability
 
 <CustomImage src="/projectImages/mri-CNN/work-1-MRI.png" alt="Model classification output with confidence scores" width={600} height={400} />
 
@@ -134,7 +177,7 @@ The visualization below illustrates our model's attention mechanism, highlightin
 
 ---
 
-## ⚖️ Clinical Validation & Ethical Framework
+##  Clinical Validation & Ethical Framework
 
 ### Current Limitations
 While promising, this research prototype faces several critical limitations that must be addressed before clinical deployment:
@@ -156,7 +199,7 @@ While promising, this research prototype faces several critical limitations that
 
 ---
 
-## 🌍 Potential Clinical Impact
+##  Potential Clinical Impact
 
 ### Immediate Applications
 - **Screening Acceleration**: Rapid preliminary assessment in high-volume imaging centers
@@ -179,7 +222,7 @@ Successful clinical integration requires:
 
 ---
 
-## 🔬 Future Research Directions
+##  Future Research Directions
 
 ### Technical Enhancements
 - **Multi-modal Integration**: Incorporating diffusion-weighted imaging, perfusion MRI, and MR spectroscopy
@@ -195,7 +238,7 @@ Successful clinical integration requires:
 
 ---
 
-## 📌 Key Insights & Contributions
+##  Key Insights & Contributions
 
 This project demonstrates the significant potential of deep learning in medical imaging while highlighting the complex challenges of responsible AI deployment in healthcare:
 
