@@ -51,6 +51,12 @@ import ModelButton from '@/components/ModelButton'
 
     This project investigates how **Convolutional Neural Networks (CNNs)** can serve as intelligent diagnostic support tools, providing rapid preliminary assessments while maintaining the essential human expertise in final diagnosis.
 
+    <div className="mt-5 mb-5">
+    According to the **World Health Organisation (WHO)**, a full clinical diagnosis of brain tumors includes identifying not only the tumor’s type but also its **grade** and **malignancy** level.  
+In this project, we focus **only on classifying the type of tumor** based on MRI features, not on grading or malignancy.
+    </div>
+This is a crucial step in building automated systems that could eventually aid in faster and more scalable triage, particularly in **resource-limited settings**.
+
 </div>
 
 ---
@@ -66,7 +72,7 @@ import ModelButton from '@/components/ModelButton'
       <h3 className="text-2xl font-semibold">
         1. Pituitary Adenomas <span className="text-green-600 text-lg">(Often benign & highly treatable)</span>
       </h3>
-      <p><strong>Location:</strong> Sellar and suprasellar regions — the “master gland” area behind the eyes.</p>
+      <p><strong>Location:</strong> Sellar and suprasellar regions, the “master gland” area behind the eyes.</p>
       <p><strong>Characteristics:</strong> Benign tumors from the pituitary gland, often hormonally active.</p>
       <p><strong>Clinical Impact:</strong> Can lead to <em>Cushing’s disease</em>, vision loss, mood swings, and fertility problems due to hormonal disruption and optic chiasm compression.</p>
       <p><strong>MRI Features:</strong> Well-defined masses with strong post-contrast enhancement.</p>
@@ -88,7 +94,7 @@ import ModelButton from '@/components/ModelButton'
       </h3>
       <p><strong>Location:</strong> Along dural surfaces from arachnoid cap cells (outer brain lining).</p>
       <p><strong>Characteristics:</strong> Most common adult brain tumor, usually benign and slow-growing.</p>
-      <p><strong>Clinical Impact:</strong> Symptoms arise from compression — headaches, cognitive changes, seizures depending on tumor position.</p>
+      <p><strong>Clinical Impact:</strong> Symptoms arise from compression, headaches, cognitive changes, seizures depending on tumor position.</p>
       <p><strong>MRI Features:</strong> Homogeneous enhancement with the classic “dural tail” sign.</p>
     </div>
   </div>
@@ -114,7 +120,7 @@ import ModelButton from '@/components/ModelButton'
 ##  Why Use CNNs?
 
 <div className="mt-5 mb-10">
-Convolutional Neural Networks (CNNs) are designed to analyze visual data. They work by applying filters that detect patterns in an image — starting from **simple edges and shapes**, then building toward **complex features** like tumor textures and outlines.  
+Convolutional Neural Networks (CNNs) are designed to analyse visual data. They work by applying filters that detect patterns in an image, starting from **simple edges and shapes**, then building toward **complex features** like tumor textures and outlines.  
 This layered pattern recognition makes CNNs particularly effective for **medical image classification**, such as identifying brain tumors from MRI scans.
 </div>
 
@@ -123,7 +129,7 @@ This layered pattern recognition makes CNNs particularly effective for **medical
 <div className="mt-5 mb-5">
 **Compute Environment**: Trained in Google Colab with **Tesla T4 GPU acceleration**  
 **Model Type**: Deep learning classifier using **Convolutional Neural Networks (CNNs)**  
-**Pretrained Backbone**: Xception architecture initialized with **ImageNet weights**  
+**Pretrained Backbone**: Xception architecture initialised with **ImageNet weights**  
 **Input Dimensions**: All MRI slices resized to **299×299 pixels**  
 **Frameworks Used**: TensorFlow 2.x with the Keras high-level API  
 </div>
@@ -135,10 +141,6 @@ This project uses a **publicly available brain MRI dataset** that consolidates i
 
 >  Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare for data integrity.
 
-According to the **World Health Organization (WHO)**, a full clinical diagnosis of brain tumors includes identifying not only the tumor’s type but also its **grade** and **malignancy** level.  
-In this project, we focus **only on classifying the type of tumor** based on MRI features — not on grading or malignancy.
-
-This is a crucial step in building automated systems that could eventually aid in faster and more scalable triage, particularly in **resource-limited settings**.
 </div>
 
 </div>
@@ -151,7 +153,7 @@ This is a crucial step in building automated systems that could eventually aid i
 
 This project is currently under active development. I am building a deep learning pipeline to classify brain tumours from MRI images using convolutional neural networks (CNNs). The base model is currently implemented using a heavyweight architecture (Xception) and trained on a labelled dataset of glioma, meningioma, pituitary tumours and healthy images.
 
-I am now conducting a series of controlled experiments to investigate how different CNN architectures — lightweight (e.g. MobileNetV2), midweight and heavyweight models — affect classification performance. These experiments also explore the impact of regularisation techniques such as dropout and architectural modifications on model generalisation.
+I am now conducting a series of controlled experiments to investigate how different CNN architectures, lightweight (e.g. MobileNetV2), midweight and heavyweight models, affect classification performance. These experiments also explore the impact of regularisation techniques such as dropout and architectural modifications on model generalisation.
 
 The goal is to produce a robust and well-documented comparison of CNN design choices and their influence on tumour classification accuracy, recall and precision.
 
@@ -179,7 +181,7 @@ Check back soon for updates, results and interactive visualisations.
 
 ### Gradient-weighted Class Activation Mapping (Grad-CAM)
 
-The visualization below illustrates our model's attention mechanism, highlighting the specific anatomical regions that influence classification decisions:
+The visualisation below illustrates our model's attention mechanism, highlighting the specific anatomical regions that influence classification decisions:
 
 <CustomImage src="/images/heatmap.png" alt="Grad-CAM heatmap showing model attention areas" width={600} height={400} />
 
@@ -204,14 +206,14 @@ The visualization below illustrates our model's attention mechanism, highlightin
 ### Current Limitations
 While promising, this research prototype faces several critical limitations that must be addressed before clinical deployment:
 
-**Data Generalizability**: Training data represents a limited demographic and imaging protocol subset. Real-world performance may vary significantly across:
+**Data Generalisability**: Training data represents a limited demographic and imaging protocol subset. Real-world performance may vary significantly across:
 - Different MRI scanner manufacturers and field strengths
 - Varying slice thickness and imaging sequences  
 - Diverse patient populations and pathology presentations
 
 **Regulatory Compliance**: Medical AI systems require rigorous validation studies and regulatory approval (FDA 510(k) or De Novo pathway) before clinical implementation.
 
-**Integration Challenges**: Seamless PACS/RIS integration, real-time inference capabilities, and radiologist workflow optimization remain significant hurdles.
+**Integration Challenges**: Seamless PACS/RIS integration, real-time inference capabilities, and radiologist workflow optimisation remain significant hurdles.
 
 ### Responsible AI Implementation
 **Human-in-the-Loop Design**: AI predictions serve as preliminary assessments, requiring mandatory radiologist review  
@@ -230,9 +232,9 @@ While promising, this research prototype faces several critical limitations that
 - **Educational Tool**: Training support for radiology residents and fellows
 
 ### Long-term Healthcare Benefits
-- **Access Democratization**: AI-assisted interpretation in underserved regions with limited radiologist availability
-- **Cost Optimization**: Reduced interpretation time and improved diagnostic efficiency
-- **Standardization**: Consistent diagnostic criteria application across different healthcare systems
+- **Access Democratisation**: AI-assisted interpretation in underserved regions with limited radiologist availability
+- **Cost Optimisation**: Reduced interpretation time and improved diagnostic efficiency
+- **Standardisation**: Consistent diagnostic criteria application across different healthcare systems
 - **Research Acceleration**: Large-scale retrospective analysis capabilities for clinical research
 
 ### Deployment Considerations
@@ -266,7 +268,7 @@ This project demonstrates the significant potential of deep learning in medical 
 
 **Technical Achievement**: Successfully developed a high-performance CNN achieving 92.3% accuracy across three critical brain tumor types, with explainable AI capabilities essential for clinical trust.
 
-**Clinical Awareness**: Emphasized the importance of human oversight, regulatory compliance, and ethical considerations in medical AI development.
+**Clinical Awareness**: Emphasised the importance of human oversight, regulatory compliance, and ethical considerations in medical AI development.
 
 **Research Foundation**: Established a robust framework for future clinical validation studies and real-world deployment considerations.
 
