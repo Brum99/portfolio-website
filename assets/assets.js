@@ -99,7 +99,7 @@ export const assets = {
 export const workData = [
     {
         slug: 'mri-classification',
-        title: 'CNNs - Brain Cancer MRI Classification',
+        title: 'Comparative Analysis of CNN Architectures for Brain Tumour Classification',
         description: 'Machine Learning',
         bgImage: '/projectImages/mri-CNN/work-1-MRI.png',
         headerImage: '/projectImages/mri-CNN/header_mri_banner.png',
