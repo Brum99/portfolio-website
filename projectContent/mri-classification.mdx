@@ -126,22 +126,61 @@ This layered pattern recognition makes CNNs particularly effective for **medical
 
 ##  Development Environment & Model Approach
 
+
 <div className="mt-5 mb-5">
 **Compute Environment**: Trained in Google Colab with **Tesla T4 GPU acceleration**  
 **Model Type**: Deep learning classifier using **Convolutional Neural Networks (CNNs)**  
-**Pretrained Backbone**: Xception architecture initialised with **ImageNet weights**  
-**Input Dimensions**: All MRI slices resized to **299×299 pixels**  
+**Pretrained Backbones**: MobileNetV2, EfficientNetB0, and Xception, all initialised with **ImageNet weights**  
+**Input Dimensions**: All MRI slices resized to **224×224 pixels**  
 **Frameworks Used**: TensorFlow 2.x with the Keras high-level API  
 </div>
 
-##  Dataset & Scope of Classification
+## Dataset & Scope of Classification
 
 <div className="mt-5 mb-5">
 This project uses a **publicly available brain MRI dataset** that consolidates images from three sources: **Figshare**, **SARTAJ**, and **Br35H**. It contains **7,023 brain MRI images** across four categories: **glioma**, **meningioma**, **pituitary**, and **no tumor**.
 
->  Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare for data integrity.
+> Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare to ensure data integrity.
+</div>
+
+## Model Performance
+
+<div className="mt-5 mb-5">
+
+Three pretrained CNN models were evaluated on the brain MRI classification task: **MobileNetV2**, **EfficientNetB0**, and **Xception**. Each model was trained for 10 epochs on the same dataset under identical conditions, allowing for a direct comparison of their learning capabilities and generalisation performance.
 
 </div>
+
+### Summary Table
+
+| Model          | Train Accuracy | Val Accuracy | Test Accuracy | Test Precision | Test Recall |
+| -------------- | -------------- | -------------| --------------| ---------------| ------------|
+| **Xception**       | 91.81%         | 90.11%        | 88.18%         | 90.10%          | 86.04%       |
+| **MobileNetV2**    | 92.67%         | 87.66%        | 84.59%         | 86.05%          | 83.30%       |
+| **EfficientNetB0** | 27.93%         | 27.91%        | 30.89%         | 0.00%           | 0.00%        |
+
+### Observations
+
+<div className="mt-5 mb-5">
+
+- **Xception** delivered the strongest and most consistent performance across training, validation, and test sets. Its use of depthwise separable convolutions and residual connections proved effective in extracting spatial features from brain MRI scans.
+- **MobileNetV2**, despite being a lightweight architecture optimised for efficiency, performed strongly with good training and test metrics. The model showed minor signs of overfitting but maintained reasonable generalisation.
+- **EfficientNetB0** failed to train effectively in this configuration. It collapsed to predicting a single class, leading to 0% precision and recall. This may be due to poor initialisation, an unsuitable learning rate, or its sensitivity to regularisation and preprocessing parameters.
+
+</div>
+
+### Visual Results
+
+<div className="mt-5 mb-5">
+
+Training curves for each model (accuracy, loss, precision, recall) are included below. Xception and MobileNetV2 demonstrate stable learning with good convergence and minimal overfitting. In contrast, EfficientNetB0 exhibits stagnant loss and accuracy, confirming its failure to learn useful representations.
+
+</div>
+
+> 📊 *Training visualisations:*
+> - `xception_training.png`
+> - `mobilenet_training.png`
+> - `efficientnet_training.png`
 
 </div>
 
