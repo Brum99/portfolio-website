@@ -117,31 +117,111 @@ This is a crucial step in building automated systems that could eventually aid i
 
 <div className="mt-10 mb-10">
 
-##  Why Use CNNs?
+## Why Use CNNs?
 
 <div className="mt-5 mb-10">
-Convolutional Neural Networks (CNNs) are designed to analyse visual data. They work by applying filters that detect patterns in an image, starting from **simple edges and shapes**, then building toward **complex features** like tumor textures and outlines.  
-This layered pattern recognition makes CNNs particularly effective for **medical image classification**, such as identifying brain tumors from MRI scans.
+Convolutional Neural Networks (CNNs) are designed to analyse visual data. They work by applying filters that detect patterns in an image, starting from <strong>simple edges and shapes</strong>, then building toward <strong>complex features</strong> like tumour textures and outlines.  
+This layered pattern recognition makes CNNs particularly effective for <strong>medical image classification</strong>, such as identifying brain tumours from MRI scans.
 </div>
+
+## What Are Pretrained Models?
+
+<div className="mt-5 mb-10">
+Pretrained models are neural networks that have been previously trained on large and diverse datasets, such as <strong>ImageNet</strong>, which contains over a million natural images across a thousand categories.  
+These models have already learned how to extract rich and generalisable visual features like edges, textures, and object parts.
+
+In this project, using pretrained backbones like <strong>Xception</strong>, <strong>MobileNetV2</strong>, and <strong>EfficientNetB0</strong> allows the model to <strong>leverage these learned features</strong> as a starting point, dramatically reducing training time and improving convergence.
+
+Instead of learning from scratch, we <strong>fine-tune</strong> these models on our specific dataset of brain MRI images. This approach is especially useful when working with <strong>limited labelled medical data</strong>, where training a large model from the ground up would be impractical or prone to overfitting.
+</div>
+
+
+---
+
+
+
+
+<div className="mt-10 mb-5">
+ <div className ="mb-5">
+## Dataset & Scope of Classification
+</div>
+ 
+  This project uses a <strong>publicly available brain MRI dataset</strong> that consolidates images from three sources: <strong>Figshare</strong>, <strong>SARTAJ</strong>, and <strong>Br35H</strong>. It contains <strong>7,023 brain MRI images</strong> across four categories: <strong>glioma</strong>, <strong>meningioma</strong>, <strong>pituitary</strong>, and <strong>no tumor</strong>.
+
+  <blockquote className="mt-4">
+    Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare to ensure data integrity.
+  </blockquote>
+</div>
+
+<div className="flex flex-col md:flex-row justify-center gap-6 mt-8 mb-10">
+  <div className="flex-1 text-center">
+    <img 
+      src="/projectImages/mri-CNN/TrainingSet_Distribution.png" 
+      alt="Training set class distribution" 
+      className="rounded-lg shadow-md w-full max-w-[400px] mx-auto"
+    />
+    <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">Training Set Distribution</p>
+  </div>
+
+  <div className="flex-1 text-center">
+    <img 
+      src="/projectImages/mri-CNN/TestSet_Distribution.png" 
+      alt="Test set class distribution" 
+      className="rounded-lg shadow-md w-full max-w-[400px] mx-auto"
+    />
+    <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">Test Set Distribution</p>
+  </div>
+</div>
+
+<div className="mt-5 mb-10">
+  Although the dataset is generally balanced across the four tumour types, the <strong>no tumor</strong> class is slightly overrepresented in both the training and testing sets.  
+  This minor imbalance was not sufficient to warrant the use of class weighting or sampling adjustments, but it may influence evaluation metrics such as recall or precision.
+</div>
+
+---
 
 ##  Development Environment & Model Approach
 
+<div className="flex flex-col md:flex-row gap-10 mt-10 mb-10 items-start">
 
-<div className="mt-5 mb-5">
-**Compute Environment**: Trained in Google Colab with **Tesla T4 GPU acceleration**  
-**Model Type**: Deep learning classifier using **Convolutional Neural Networks (CNNs)**  
-**Pretrained Backbones**: MobileNetV2, EfficientNetB0, and Xception, all initialised with **ImageNet weights**  
-**Input Dimensions**: All MRI slices resized to **224×224 pixels**  
-**Frameworks Used**: TensorFlow 2.x with the Keras high-level API  
+  {/* LEFT: Environment and Model Details */}
+  <div className="flex flex-col space-y-6 md:w-1/2">
+    <div className="mt-5 mb-5">
+      <strong>Compute Environment</strong>: Trained in Google Colab with <strong>Tesla T4 GPU acceleration</strong><br />
+      <strong>Model Type</strong>: Deep learning classifier using <strong>Convolutional Neural Networks (CNNs)</strong><br />
+      <strong>Pretrained Backbones</strong>: MobileNetV2, EfficientNetB0, and Xception, all initialised with <strong>ImageNet weights</strong><br />
+      <strong>Input Dimensions</strong>: All MRI slices resized to <strong>224×224 pixels</strong><br />
+      <strong>Frameworks Used</strong>: TensorFlow 2.x with the Keras high-level API
+    </div>
+
+    <div>
+      All three models, <strong>MobileNetV2</strong>, <strong>EfficientNetB0</strong>, and <strong>Xception</strong>, share the same classification head and training configuration.
+      The only difference between them lies in the pretrained backbone used for feature extraction.
+    </div>
+    <div>
+      All input images were resized to <code>224×224</code> pixels for consistency across models.
+      However, internal feature map sizes differed based on the architecture.
+      For example, <strong>Xception</strong> produced a deeper output feature map of shape <code>(7, 7, 2048)</code> compared to the other models.
+    </div>
+    <div>
+      The following animation visualises the internal structure of each model architecture used in this experiment.
+    </div>
+  </div>
+
+  {/* RIGHT: Animation */}
+  <div className="md:w-1/2 flex justify-center items-center">
+    <img 
+      src="/projectImages/mri-CNN/ezgif.com-gif-to-webp-converter.webp" 
+      alt="Model architecture comparison animation" 
+      className="rounded-xl shadow-md w-[350px]"
+    />
+  </div>
+
 </div>
 
-## Dataset & Scope of Classification
 
-<div className="mt-5 mb-5">
-This project uses a **publicly available brain MRI dataset** that consolidates images from three sources: **Figshare**, **SARTAJ**, and **Br35H**. It contains **7,023 brain MRI images** across four categories: **glioma**, **meningioma**, **pituitary**, and **no tumor**.
 
-> Note: The glioma samples from the SARTAJ dataset were found to be mislabeled and were replaced with verified images from Figshare to ensure data integrity.
-</div>
+---
 
 ## Model Performance
 
@@ -151,13 +231,50 @@ Three pretrained CNN models were evaluated on the brain MRI classification task:
 
 </div>
 
-### Summary Table
 
-| Model          | Train Accuracy | Val Accuracy | Test Accuracy | Test Precision | Test Recall |
-| -------------- | -------------- | -------------| --------------| ---------------| ------------|
-| **Xception**       | 91.81%         | 90.11%        | 88.18%         | 90.10%          | 86.04%       |
-| **MobileNetV2**    | 92.67%         | 87.66%        | 84.59%         | 86.05%          | 83.30%       |
-| **EfficientNetB0** | 27.93%         | 27.91%        | 30.89%         | 0.00%           | 0.00%        |
+<h3>Model Performance Summary</h3>
+
+<table style={{ borderCollapse: "collapse", width: "100%", marginTop: "1rem", marginBottom: "1rem" }}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Model</th>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Train Accuracy</th>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Val Accuracy</th>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Test Accuracy</th>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Test Precision</th>
+      <th style={{ textAlign: "left", paddingRight: "1rem" }}>Test Recall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Xception</strong></td>
+      <td>91.81%</td>
+      <td>90.11%</td>
+      <td>88.18%</td>
+      <td>90.10%</td>
+      <td>86.04%</td>
+    </tr>
+    <tr>
+      <td><strong>MobileNetV2</strong></td>
+      <td>92.67%</td>
+      <td>87.66%</td>
+      <td>84.59%</td>
+      <td>86.05%</td>
+      <td>83.30%</td>
+    </tr>
+    <tr>
+      <td><strong>EfficientNetB0</strong></td>
+      <td>27.93%</td>
+      <td>27.91%</td>
+      <td>30.89%</td>
+      <td>0.00%</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+
+---
 
 ### Observations
 
@@ -170,6 +287,9 @@ Three pretrained CNN models were evaluated on the brain MRI classification task:
 </div>
 
 ### Visual Results
+
+
+---
 
 <div className="mt-5 mb-5">
 
@@ -184,6 +304,18 @@ Training curves for each model (accuracy, loss, precision, recall) are included 
 
 </div>
 
+
+
+ ### Consideration 
+<div className="mt-10 mb-10">
+
+While **Xception** demonstrated superior performance in this experiment, it is important to note that with additional hyperparameter tuning, architecture modifications, and training optimisation, both **MobileNetV2** and **EfficientNetB0** could potentially achieve comparable results.
+
+Each pretrained backbone offers unique strengths, **MobileNetV2** for its computational efficiency, **EfficientNetB0** for its compound scaling strategy, and **Xception** for its use of depthwise separable convolutions. These characteristics can be further leveraged through targeted optimisation techniques tailored to each model.
+
+However, to maintain experimental consistency and based on the results observed under identical training conditions, this project will proceed by further optimising the **Xception** model as it exhibited the most promising baseline performance.
+
+</div>
 
 
 <div className = "w-1/2 mx-auto text-center mb-5">
