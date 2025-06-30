@@ -2,8 +2,18 @@ import { workData } from '../../../assets/assets';
 import { loadProjectMdx } from '../../../lib/mdx-loader';
 import ProjectDetailsClient from './ProjectDetailsClient';
 
-export default async function ProjectDetails({ params }) {
-  const { slug } = params;
+export const dynamic = 'force-static'; // Ensures static generation
+
+// Optional: prebuild routes
+export async function generateStaticParams() {
+  return workData.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export default async function ProjectDetails(props) {
+  const { slug } = await props.params;
+
   const project = workData.find((p) => p.slug === slug);
 
   if (!project) {

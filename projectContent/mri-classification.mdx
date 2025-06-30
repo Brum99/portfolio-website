@@ -5,9 +5,9 @@ import ModelButton from '@/components/ModelButton'
 
 
 <div className = "w-1/2 mx-auto text-center mb-5">
-# Brain MRI Tumor Classification Using Deep Learning
+# Comparative Analysis of CNN Architectures for Brain Tumour Classification
 
-> 🚧 **This project is currently in development.**  
+  
 > Explore the complete implementation: [GitHub Repository](https://github.com/Brum99/MRI_brain_tumor_prediction)
 </div>
 ---
@@ -277,7 +277,6 @@ Validation and test sets were not augmented and only rescaled to the [0, 1] rang
 </div>
 
 
-
 <div className="mt-5 mb-5">
 
 Three pretrained CNN models were evaluated on the brain MRI classification task: **MobileNetV2**, **EfficientNetB0**, and **Xception**. Each model was trained for 10 epochs on the same dataset under identical conditions, allowing for a direct comparison of their learning capabilities and generalisation performance.
@@ -330,196 +329,112 @@ Three pretrained CNN models were evaluated on the brain MRI classification task:
 
 </div>
 
+### Visual Results
+
+<div className="grid grid-cols-2 gap-6 mt-8 mb-10">
+
+  {/* EfficientNetB0 */}
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/efficientnet_cm.png"
+      alt="EfficientNetB0 Confusion Matrix"
+      className="rounded-lg shadow-md w-full max-w-[500px] mx-auto"
+    />
+    <p className="mt-2 text-sm">EfficientNetB0 Confusion Matrix</p>
+  </div>
+
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/efficientnet_training.png"
+      alt="EfficientNetB0 Training Metrics"
+      className="rounded-lg shadow-md w-full max-w-[750px] mx-auto"
+    />
+    <p className="mt-2 text-sm">EfficientNetB0 Training Metrics</p>
+  </div>
+
+  {/* MobileNetV2 */}
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/mobilenet_cm.png"
+      alt="MobileNetV2 Confusion Matrix"
+      className="rounded-lg shadow-md w-full max-w-[500px] mx-auto"
+    />
+    <p className="mt-2 text-sm">MobileNetV2 Confusion Matrix</p>
+  </div>
+
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/mobilenet_training.png"
+      alt="MobileNetV2 Training Metrics"
+      className="rounded-lg shadow-md w-full max-w-[750px] mx-auto"
+    />
+    <p className="mt-2 text-sm">MobileNetV2 Training Metrics</p>
+  </div>
+
+  {/* Xception */}
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/xception_cm.png"
+      alt="Xception Confusion Matrix"
+      className="rounded-lg shadow-md w-full max-w-[500px] mx-auto"
+    />
+    <p className="mt-2 text-sm">Xception Confusion Matrix</p>
+  </div>
+
+  <div className="text-center">
+    <img 
+      src="/projectImages/mri-CNN/xception_training.png"
+      alt="Xception Training Metrics"
+      className="rounded-lg shadow-md w-full max-w-[750px] mx-auto"
+    />
+    <p className="mt-2 text-sm">Xception Training Metrics</p>
+  </div>
+
+</div>
+
+
+
 ---
 
 <div className="mt-10">
 ### Observations
 </div>
 
-
-
 <div className="mt-5 mb-5">
-
-- **Xception** delivered the strongest and most consistent performance across training, validation, and test sets. Its use of depthwise separable convolutions and residual connections proved effective in extracting spatial features from brain MRI scans.
-- **MobileNetV2**, despite being a lightweight architecture optimised for efficiency, performed strongly with good training and test metrics. The model showed minor signs of overfitting but maintained reasonable generalisation.
-- **EfficientNetB0** failed to train effectively in this configuration. It collapsed to predicting a single class, leading to 0% precision and recall. This may be due to poor initialisation, an unsuitable learning rate, or its sensitivity to regularisation and preprocessing parameters.
-
+ <strong>Xception</strong> demonstrated the most robust performance with <code>88.18%</code> test accuracy and excellent generalisation. The minimal gap between training (91.81%) and test accuracy indicates strong model stability. With balanced precision (90.10%) and recall (86.04%), Xception showed consistent classification across all tumor types, making it the most suitable choice for clinical deployment.
 </div>
 
-### Visual Results
+<div className="mt-5 mb-5">
+ <strong>MobileNetV2</strong> achieved reasonable performance with <code>84.59%</code> test accuracy but exhibited concerning overfitting patterns. The significant gap between training (92.67%) and validation (87.66%) accuracy suggests limited generalisation capability. While precision remained acceptable at 86.05%, the lower recall (83.30%) indicates potential missed classifications in clinical scenarios.
+</div>
+
+<div className="mt-5 mb-5">
+ <strong>EfficientNetB0</strong> experienced complete training failure with <code>30.89%</code> test accuracy, performing worse than random classification. The model achieved zero precision and recall, consistently predicting only the "notumor" class regardless of input. This failure highlights the critical importance of base model selection in transfer learning applications and demonstrates that architectural efficiency does not guarantee task suitability.
+</div>
+
+<div className="mt-5 mb-5">
+ The comparative analysis reveals that model architecture significantly impacts transfer learning effectiveness for medical imaging tasks. <strong>Xception's superior performance</strong> across all metrics establishes it as the optimal choice, while EfficientNetB0's failure provides valuable insights into the limitations of assuming universal model applicability.
+</div>
 
 
-### Notes
-
-This carousel compares confusion matrices and training metrics across all models.
 
 
-### Visual Results
 
-
-### Notes
-
-This carousel compares confusion matrices and training metrics across all models.
-
+</div>
 
 ---
 
-<div className="mt-5 mb-5">
 
-Training curves for each model (accuracy, loss, precision, recall) are included below. Xception and MobileNetV2 demonstrate stable learning with good convergence and minimal overfitting. In contrast, EfficientNetB0 exhibits stagnant loss and accuracy, confirming its failure to learn useful representations.
-
-</div>
-
-> 📊 *Training visualisations:*
-> - `xception_training.png`
-> - `mobilenet_training.png`
-> - `efficientnet_training.png`
-
-</div>
-
-
-
- ### Consideration 
 <div className="mt-10 mb-10">
+<div className="mb-5">
+ ### Consideration 
+</div>
 
 While **Xception** demonstrated superior performance in this experiment, it is important to note that with additional hyperparameter tuning, architecture modifications, and training optimisation, both **MobileNetV2** and **EfficientNetB0** could potentially achieve comparable results.
 
 Each pretrained backbone offers unique strengths, **MobileNetV2** for its computational efficiency, **EfficientNetB0** for its compound scaling strategy, and **Xception** for its use of depthwise separable convolutions. These characteristics can be further leveraged through targeted optimisation techniques tailored to each model.
 
-However, to maintain experimental consistency and based on the results observed under identical training conditions, this project will proceed by further optimising the **Xception** model as it exhibited the most promising baseline performance.
 
 </div>
 
 
-<div className = "w-1/2 mx-auto text-center mb-5">
-### Project In Progress: CNN-Based Brain Tumour Classification  
-*Last updated: 23 June 2025*
-
-This project is currently under active development. I am building a deep learning pipeline to classify brain tumours from MRI images using convolutional neural networks (CNNs). The base model is currently implemented using a heavyweight architecture (Xception) and trained on a labelled dataset of glioma, meningioma, pituitary tumours and healthy images.
-
-I am now conducting a series of controlled experiments to investigate how different CNN architectures, lightweight (e.g. MobileNetV2), midweight and heavyweight models, affect classification performance. These experiments also explore the impact of regularisation techniques such as dropout and architectural modifications on model generalisation.
-
-The goal is to produce a robust and well-documented comparison of CNN design choices and their influence on tumour classification accuracy, recall and precision.
-
-Check back soon for updates, results and interactive visualisations.
-
-
-> 🚧 **More to come!**  
-> Explore the complete implementation: [GitHub Repository](https://github.com/Brum99/MRI_brain_tumor_prediction)
-</div>
-
-
-{/* 
-
----
-
-<ModelButton endpoint="/api/predict" />
-
----
-
-##  Performance Analysis & Model Interpretability
-
-<CustomImage src="/projectImages/mri-CNN/work-1-MRI.png" alt="Model classification output with confidence scores" width={600} height={400} />
-
-*Model output demonstrating multi-class probability distributions for tumor classification*
-
-### Gradient-weighted Class Activation Mapping (Grad-CAM)
-
-The visualisation below illustrates our model's attention mechanism, highlighting the specific anatomical regions that influence classification decisions:
-
-<CustomImage src="/images/heatmap.png" alt="Grad-CAM heatmap showing model attention areas" width={600} height={400} />
-
-**Key Observations**:
-- Model correctly focuses on tumor boundaries and enhancement patterns
-- Attention maps align with radiologically significant features
-- Minimal activation in non-pathological brain regions demonstrates specificity
-
-### Performance Metrics by Class
-
-| Tumor Type | Precision | Recall | F1-Score | Support |
-|------------|-----------|---------|----------|---------|
-| Glioma | 0.89 | 0.94 | 0.91 | 826 |
-| Meningioma | 0.95 | 0.88 | 0.91 | 822 |
-| Pituitary | 0.93 | 0.91 | 0.92 | 827 |
-| **Macro Avg** | **0.92** | **0.91** | **0.91** | **2475** |
-
----
-
-##  Clinical Validation & Ethical Framework
-
-### Current Limitations
-While promising, this research prototype faces several critical limitations that must be addressed before clinical deployment:
-
-**Data Generalisability**: Training data represents a limited demographic and imaging protocol subset. Real-world performance may vary significantly across:
-- Different MRI scanner manufacturers and field strengths
-- Varying slice thickness and imaging sequences  
-- Diverse patient populations and pathology presentations
-
-**Regulatory Compliance**: Medical AI systems require rigorous validation studies and regulatory approval (FDA 510(k) or De Novo pathway) before clinical implementation.
-
-**Integration Challenges**: Seamless PACS/RIS integration, real-time inference capabilities, and radiologist workflow optimisation remain significant hurdles.
-
-### Responsible AI Implementation
-**Human-in-the-Loop Design**: AI predictions serve as preliminary assessments, requiring mandatory radiologist review  
-**Bias Monitoring**: Continuous evaluation for demographic, technical, and institutional biases  
-**Transparency Requirements**: Full explainability of model decisions for clinical accountability  
-**Error Analysis**: Comprehensive false positive/negative analysis with clinical correlation
-
----
-
-##  Potential Clinical Impact
-
-### Immediate Applications
-- **Screening Acceleration**: Rapid preliminary assessment in high-volume imaging centers
-- **Emergency Triage**: Automated flagging of potentially urgent cases for expedited review
-- **Quality Assurance**: Second-opinion validation to reduce diagnostic errors
-- **Educational Tool**: Training support for radiology residents and fellows
-
-### Long-term Healthcare Benefits
-- **Access Democratisation**: AI-assisted interpretation in underserved regions with limited radiologist availability
-- **Cost Optimisation**: Reduced interpretation time and improved diagnostic efficiency
-- **Standardisation**: Consistent diagnostic criteria application across different healthcare systems
-- **Research Acceleration**: Large-scale retrospective analysis capabilities for clinical research
-
-### Deployment Considerations
-Successful clinical integration requires:
-- **Multi-institutional validation studies** with diverse patient populations
-- **Prospective clinical trials** demonstrating non-inferiority to standard care
-- **Continuous learning systems** that adapt to institutional-specific imaging protocols
-- **Robust cybersecurity frameworks** protecting sensitive medical data
-
----
-
-##  Future Research Directions
-
-### Technical Enhancements
-- **Multi-modal Integration**: Incorporating diffusion-weighted imaging, perfusion MRI, and MR spectroscopy
-- **3D Volumetric Analysis**: Full brain volume assessment rather than 2D slice-based classification
-- **Uncertainty Quantification**: Bayesian deep learning approaches for confidence estimation
-- **Federated Learning**: Privacy-preserving collaborative training across institutions
-
-### Clinical Validation Pipeline
-- **Radiologist Agreement Studies**: Quantifying inter-observer variability and AI performance relative to expert consensus
-- **Prospective Clinical Trials**: Real-world validation in clinical workflows
-- **Health Economics Analysis**: Cost-effectiveness studies for healthcare system adoption
-- **Patient Outcome Correlation**: Long-term follow-up studies linking AI predictions to treatment outcomes
-
----
-
-##  Key Insights & Contributions
-
-This project demonstrates the significant potential of deep learning in medical imaging while highlighting the complex challenges of responsible AI deployment in healthcare:
-
-**Technical Achievement**: Successfully developed a high-performance CNN achieving 92.3% accuracy across three critical brain tumor types, with explainable AI capabilities essential for clinical trust.
-
-**Clinical Awareness**: Emphasised the importance of human oversight, regulatory compliance, and ethical considerations in medical AI development.
-
-**Research Foundation**: Established a robust framework for future clinical validation studies and real-world deployment considerations.
-
-**Interdisciplinary Approach**: Bridged computer science methodology with clinical neuroscience expertise, demonstrating the collaborative nature required for impactful healthcare AI.
-
-The intersection of artificial intelligence and medical imaging represents one of the most promising frontiers for improving patient outcomes. However, the path from research prototype to clinical implementation requires meticulous attention to safety, efficacy, and ethical considerations that this project has endeavored to address comprehensively.
-
----
-
-*/}
