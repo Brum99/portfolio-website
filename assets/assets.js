@@ -107,9 +107,9 @@ export const workData = [
         tags: ['TensorFlow', 'Medical Imaging', 'Python'],
     },
     // {
-    //     slug: 'geo-based-app',
-    //     title: 'Geo based app',
-    //     description: 'Mobile App',
+    //     slug: 'A-100-Challenge',
+    //     title: 'Sub 10 Minute Training Challenge A-100 GPU CIFAR-10: Achieving 97% Accuracy',
+    //     description: 'Machine Learning',
     //     bgImage: '/work-2.png',
     // },
     // {
@@ -130,7 +130,7 @@ export const serviceData = [
     { icon: assets.ML_icon, title: 'ML/AI', description: 'I build intelligent systems using deep learning, computer vision, and large language models. Projects include a 3D-CNN surgical skill classifier and fine-tuning LLMs.', link: '' },
     { icon: assets.data_icon, title: 'Data Science', description: 'I apply statistics and machine learning to uncover insights and power real-world decisions.', link: '' },
     { icon: assets.web_app_icon, title: 'Web App Development', description: 'I develop responsive, interactive web applications using Flask, Next.js, and Mapbox.', link: '' },
-    { icon: assets.bot_icon, title: 'Agent Programming', description: 'I specialize in designing multi-agent systems and autonomous behaviors.', link: '' },
+    { icon: assets.bot_icon, title: 'Agent Programming', description: 'I specialise in designing multi-agent systems and autonomous behaviors.', link: '' },
 ]
 
 export const infoList = [
