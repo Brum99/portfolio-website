@@ -136,6 +136,19 @@ Instead of learning from scratch, we <strong>fine-tune</strong> these models on 
 </div>
 
 
+
+---
+
+<div className="flex flex-col items-center my-10">
+  <h3 className="text-lg font-semibold mb-4 text-center">Display of MRI Images</h3>
+  <img 
+    src="/projectImages/mri-CNN/4x4_brain_scans.png" 
+    alt="Grid of 4x4 brain MRI scans" 
+    className="rounded-xl shadow-lg w-full max-w-4xl"
+  />
+</div>
+
+
 ---
 
 
@@ -160,7 +173,7 @@ Instead of learning from scratch, we <strong>fine-tune</strong> these models on 
       alt="Training set class distribution" 
       className="rounded-lg shadow-md w-full max-w-[400px] mx-auto"
     />
-    <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">Training Set Distribution</p>
+    <p className="mt-3 text-sm">Training Set Distribution</p>
   </div>
 
   <div className="flex-1 text-center">
@@ -169,7 +182,7 @@ Instead of learning from scratch, we <strong>fine-tune</strong> these models on 
       alt="Test set class distribution" 
       className="rounded-lg shadow-md w-full max-w-[400px] mx-auto"
     />
-    <p className="mt-3 text-sm text-gray-700 dark:text-gray-300">Test Set Distribution</p>
+    <p className="mt-3 text-sm">Test Set Distribution</p>
   </div>
 </div>
 
@@ -178,9 +191,43 @@ Instead of learning from scratch, we <strong>fine-tune</strong> these models on 
   This minor imbalance was not sufficient to warrant the use of class weighting or sampling adjustments, but it may influence evaluation metrics such as recall or precision.
 </div>
 
+
 ---
 
+<div className="mt-10">
+## Preprocessing
+</div>
+
+
+
+
+<div className="mt-5 mb-5">
+
+The training set was divided using <strong>stratified sampling</strong> to ensure balanced class representation across training and validation subsets. All images were resized to <code>224×224</code> pixels for input compatibility with pretrained CNNs.
+
+</div>
+
+<div className="mt-5 mb-5">
+
+To enhance generalisation and reduce overfitting, <strong>data augmentation</strong> was applied to the training set using TensorFlow’s <code>ImageDataGenerator</code>, including random rotations (±10°), zoom transformations (±10%), and horizontal flips. Since the dataset included multiple perspectives (axial, sagittal, and coronal), horizontal flipping was deemed appropriate for regularisation.
+
+</div>
+
+<div className="mt-5 mb-5">
+
+Validation and test sets were not augmented and only rescaled to the [0, 1] range, preserving evaluation integrity. This preprocessing approach ensured consistency and robustness across all models during training and evaluation.
+
+</div>
+
+---
+
+
+<div className = "mt-10 mb-5">
 ##  Development Environment & Model Approach
+</div>
+
+
+
 
 <div className="flex flex-col md:flex-row gap-10 mt-10 mb-10 items-start">
 
@@ -221,15 +268,23 @@ Instead of learning from scratch, we <strong>fine-tune</strong> these models on 
 
 
 
+
+
 ---
 
+<div className="mt-10">
 ## Model Performance
+</div>
+
+
 
 <div className="mt-5 mb-5">
 
 Three pretrained CNN models were evaluated on the brain MRI classification task: **MobileNetV2**, **EfficientNetB0**, and **Xception**. Each model was trained for 10 epochs on the same dataset under identical conditions, allowing for a direct comparison of their learning capabilities and generalisation performance.
 
 </div>
+
+<div className="mb-10">
 
 
 <h3>Model Performance Summary</h3>
@@ -273,10 +328,15 @@ Three pretrained CNN models were evaluated on the brain MRI classification task:
   </tbody>
 </table>
 
+</div>
 
 ---
 
+<div className="mt-10">
 ### Observations
+</div>
+
+
 
 <div className="mt-5 mb-5">
 
@@ -287,6 +347,19 @@ Three pretrained CNN models were evaluated on the brain MRI classification task:
 </div>
 
 ### Visual Results
+
+
+### Notes
+
+This carousel compares confusion matrices and training metrics across all models.
+
+
+### Visual Results
+
+
+### Notes
+
+This carousel compares confusion matrices and training metrics across all models.
 
 
 ---
