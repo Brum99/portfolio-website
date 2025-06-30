@@ -4,16 +4,64 @@ import ModelButton from '@/components/ModelButton'
 
 
 
-<div className = "w-1/2 mx-auto text-center mb-5">
-# Comparative Analysis of CNN Architectures for Brain Tumour Classification
-
+<div className = "w-1/2 mx-auto text-center mb-10">
   
 > Explore the complete implementation: [GitHub Repository](https://github.com/Brum99/MRI_brain_tumor_prediction)
 </div>
+
+---
+
+<div className="mt-10 mb-5">
+## Problem Statement
+</div>
+
+<div className=" mb-5">
+This project addresses the challenge of classifying brain tumor types from MRI images using pretrained CNN architectures. Our goal is to benchmark performance across popular transfer learning models under standardized conditions, focusing on diagnostic accuracy and generalization across glioma, meningioma, and pituitary tumors.
+</div>
+
+<div className="mb-10">
+<h3>Model Performance Summary</h3>
+
+<table style={{ borderCollapse: "collapse", width: "100%", marginTop: "1rem", marginBottom: "1rem" }}>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left", padding: "0.5rem" }}>Model</th>
+      <th style={{ textAlign: "left", padding: "0.5rem" }}>Test Accuracy</th>
+      <th style={{ textAlign: "left", padding: "0.5rem" }}>Precision</th>
+      <th style={{ textAlign: "left", padding: "0.5rem" }}>Recall</th>
+      <th style={{ textAlign: "left", padding: "0.5rem" }}>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ padding: "0.5rem" }}><strong>Xception</strong></td>
+      <td style={{ padding: "0.5rem" }}>88.18%</td>
+      <td style={{ padding: "0.5rem" }}>90.10%</td>
+      <td style={{ padding: "0.5rem" }}>86.04%</td>
+      <td style={{ padding: "0.5rem" }}>Best performance overall</td>
+    </tr>
+    <tr>
+      <td style={{ padding: "0.5rem" }}><strong>MobileNetV2</strong></td>
+      <td style={{ padding: "0.5rem" }}>84.59%</td>
+      <td style={{ padding: "0.5rem" }}>86.05%</td>
+      <td style={{ padding: "0.5rem" }}>83.30%</td>
+      <td style={{ padding: "0.5rem" }}>Some overfitting</td>
+    </tr>
+    <tr>
+      <td style={{ padding: "0.5rem" }}><strong>EfficientNetB0</strong></td>
+      <td style={{ padding: "0.5rem" }}>30.89%</td>
+      <td style={{ padding: "0.5rem" }}>0.00%</td>
+      <td style={{ padding: "0.5rem" }}>0.00%</td>
+      <td style={{ padding: "0.5rem" }}>Complete training failure</td>
+    </tr>
+  </tbody>
+</table>
+
+</div> 
 ---
 
 
-<div className="mt-10 mb-10">
+<div className="mt-10 mb-15">
     <div className="mb-5">
     Why This Matters
     </div>
